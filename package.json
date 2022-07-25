@@ -1,0 +1,25 @@
+{
+  "name": "sookmyung_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "NODE_ENV=production PORT=80 pm2 start app.js -i 0",
+    "dev": "nodemon server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Byunwoojin/sookmyung_project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Byunwoojin/sookmyung_project/issues"
+  },
+  "homepage": "https://github.com/Byunwoojin/sookmyung_project#readme",
+  "dependencies": {
+    "pm2": "^5.2.0",
+    "winston": "^3.8.1"
+  }
+}
