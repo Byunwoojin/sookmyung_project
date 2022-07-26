@@ -7,11 +7,11 @@ const hpp = require("hpp");
 const morgan = require("morgan");
 
 app.set("port", process.env.PORT || 3000);
-app.get("/", (req, res) => {
+app.use("/", (req, res) => {
   res.send("Hello Express");
 });
 
-app.get("/user", (req, res) => {
+app.use("/user", (req, res) => {
   res.send("Hello Hello");
 });
 
