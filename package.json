@@ -2,7 +2,7 @@
   "name": "sookmyung_project",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production PORT=80 pm2 start server.js -i 0",
     "dev": "nodemon server",
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Byunwoojin/sookmyung_project#readme",
   "dependencies": {
+    "cross-env": "^7.0.3",
     "helmet": "^5.1.1",
     "hpp": "^0.2.3",
     "morgan": "^1.10.0",
