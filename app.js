@@ -4,6 +4,7 @@ const app = express();
 const logger = require("./logger");
 const helmet = require("helmet");
 const hpp = require("hpp");
+const morgan = require("morgan");
 
 app.set("port", process.env.PORT || 3000);
 app.get("/", (req, res) => {
