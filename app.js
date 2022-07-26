@@ -7,16 +7,12 @@ const hpp = require("hpp");
 const morgan = require("morgan");
 
 app.set("port", process.env.PORT || 3000);
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
   res.send("Hello Express!!!");
 });
 
-app.use("/user", (req, res) => {
+app.get("/user", (req, res) => {
   res.send("Hello Hello");
-});
-
-app.listen(app.get("port"), () => {
-  console.log(app.get("port"), "번 포트에서 대기중");
 });
 
 if (process.env.NODE_ENV === "production") {
@@ -34,3 +30,5 @@ app.use((req, res, next) => {
   logger.error(error.message);
   next(error);
 });
+
+module.exports = app;
