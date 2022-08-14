@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const logger = require("./logger");
 const helmet = require("helmet");
+const fs = require("fs");
 const hpp = require("hpp");
 const morgan = require("morgan");
 
@@ -13,6 +14,13 @@ app.get("/", (req, res) => {
 
 app.get("/user", (req, res) => {
   res.send("Hello Hello");
+});
+
+app.get("/data", (req, res) => {
+  let rawdata = fs.readFileSync("./model/model.json");
+  let data = JSON.parse(rawdata);
+  console.log(data);
+  res.send(data);
 });
 
 if (process.env.NODE_ENV === "production") {
