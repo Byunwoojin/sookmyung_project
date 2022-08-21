@@ -8,9 +8,9 @@ const uploadImage = multer({
     },
     filename(req, file, done) {
       // 파일명 + 현재시간.확장자 = 전체 파일명
-      //const ext = path.extname(file.originalname);
-      //done(null, path.basename(file.originalname, ext) + Date.now() + ext);
-      done(null, 'uploadImage' + path.extname(file.originalname));
+      const ext = path.extname(file.originalname);
+      done(null, path.basename(file.originalname, ext) + Date.now() + ext);
+      //done(null, 'uploadImage' + path.extname(file.originalname));
     },
   }),
   limits: { fileSize: 5 * 1024 * 1024 }, //5MB로 제한
