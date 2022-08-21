@@ -6,7 +6,7 @@ const statusCode = require('../modules/statusCode');
 const router = express.Router();
 
 router.post('/', uploadMulter.uploadImage.single('image'), (req, res) => {
-  
+
   if (req.body == undefined) return res.status(statusCode.BAD_REQUEST)
     .send(util.fail
       (
@@ -15,7 +15,7 @@ router.post('/', uploadMulter.uploadImage.single('image'), (req, res) => {
       )
     );
 
-    if(req.body.image == '') return res.status(statusCode.BAD_REQUEST)
+  if (req.body.image == '') return res.status(statusCode.BAD_REQUEST)
     .send(util.fail
       (
         statusCode.BAD_REQUEST,
@@ -23,22 +23,19 @@ router.post('/', uploadMulter.uploadImage.single('image'), (req, res) => {
       )
     );
 
-    try {
-         //파일을 py로 보내서 처리값 string을 body에 넣음
-    //util이랑 연결하기
-    //error부분도!
-    
-        res.status(statusCode.OK).send(
-            util.success(
-                statusCode.OK,
-                "image post sucess",
-                "리턴 쓰레기 종류 예정"
-            )
-        );
-    }catch(error) {
+  try {
+    //파일을 py로 보내서 처리값 string을 body에 넣음
+    res.status(statusCode.OK).send(
+      util.success(
+        statusCode.OK,
+        "image post sucess",
+        "리턴 쓰레기 종류 예정"
+      )
+    );
+  } catch (error) {
 
-    }
-    
+  }
+
 });
 
 module.exports = router;

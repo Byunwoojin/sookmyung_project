@@ -5,8 +5,9 @@ const Table = require('../models');
 
 const router = express.Router();
 
-// GET /img 라우터
+// GET /image 라우터
 router.get('/', (req, res) => {
+    //results table 모든 내용 조회
     const images = Table.Result.findAll({
     })
         .then((images) => {
