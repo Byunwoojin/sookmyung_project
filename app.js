@@ -7,10 +7,15 @@ const fs = require("fs");
 const hpp = require("hpp");
 const morgan = require("morgan");
 
+const indexRouter = require('./routes');
+const uploadRouter = require('./routes/upload');
+
 app.set("port", process.env.PORT || 3000);
-app.get("/", (req, res) => {
-  res.send("Hello Woojin");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello Woojin");
+// });
+app.use('/', indexRouter);
+app.use('/upload', uploadRouter);
 
 app.get("/user", (req, res) => {
   res.send("Hello Hello");
