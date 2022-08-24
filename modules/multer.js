@@ -4,7 +4,7 @@ const path = require("path");
 const uploadImage = multer({
   storage: multer.diskStorage({
     destination(req, file, done) { //파일 저장 위치
-      done(null, 'uploads');
+      done(null, 'public/uploads');
     },
     filename(req, file, done) {
       // 파일명 + 현재시간.확장자 = 전체 파일명
