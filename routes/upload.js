@@ -32,14 +32,13 @@ router.post('/', uploadMulter.uploadImage.single('image'), async (req, res) => {
     const uploadImage = await Table.Result.create({
       path: path, type: type
     }).then((dbRes) => {
-      console.log(dbRes.id);
       imageId = dbRes.id;
     });
     res.status(statusCode.OK).send(
       util.success(
         statusCode.OK,
         "image post sucess",
-        {imageId : imageId}
+        { imageId: imageId }
       )
     )
   } catch (error) {

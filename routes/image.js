@@ -5,27 +5,35 @@ const Table = require('../models');
 
 const router = express.Router();
 
-// GET /image 라우터
-router.get('/', (req, res) => {
-    //results table 모든 내용 조회
-    const images = Table.Result.findAll({
-    })
-        .then((images) => {
-            res.status(statusCode.OK).send(
-                util.success(
-                    statusCode.OK,
-                    "image get success",
-                    { images }
-                )
-            );
-        })
-        .catch((error) => {
-            res.status(statusCode.BAD_REQUEST)
-                .send(util.fail(
-                    statusCode.BAD_REQUEST,
-                    "image get fail"
-                ));
+// GET /image/:id 라우터
+router.get('/:id', async (req, res) => {
+    //id, type, path 보내기
+
+    const imageId = req.params.id;
+    let result = null;
+    try {
+        const image = await Table.Result.findAll({
+            attributes: ['id', 'path', 'type'],
+            where: {
+                id: imageId
+            },
+        }).then((image) => {
+            result = image;
         });
+        res.status(statusCode.OK).send(
+            util.success(
+                statusCode.OK,
+                "image get success",
+                { result }
+            )
+        );
+    } catch (error) {
+        res.status(statusCode.BAD_REQUEST)
+            .send(util.fail(
+                statusCode.BAD_REQUEST,
+                "image get fail"
+            ));
+    }
 });
 
 module.exports = router;
