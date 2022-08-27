@@ -10216,24 +10216,25 @@ const test_image = [
   ],
 ];
 
-var sequelize = require('./models').sequelize;
+var sequelize = require("./models").sequelize;
 //서버 실행 시 mySQL과 연동
-sequelize.sync()
-.then(() => {
-  console.log("db connect success");
-})
-.catch((err) => {
-  console.error(err);
-});
+sequelize
+  .sync()
+  .then(() => {
+    console.log("db connect success");
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
-const indexRouter = require('./routes');
-const uploadRouter = require('./routes/upload');
-const getImageRouter = require('./routes/image');
+const indexRouter = require("./routes");
+const uploadRouter = require("./routes/upload");
+const getImageRouter = require("./routes/image");
 
 app.set("port", process.env.PORT || 3000);
-app.use('/', indexRouter);
-app.use('/upload', uploadRouter);
-app.use('/image', getImageRouter);
+app.use("/", indexRouter);
+app.use("/upload", uploadRouter);
+app.use("/image", getImageRouter);
 
 app.get("/user", (req, res) => {
   res.send("Hello Hello");
@@ -10243,7 +10244,7 @@ app.use("/public", express.static(path.join(__dirname, "public")));
 
 app.get("/data", async (req, res) => {
   const model = await tf.loadLayersModel(
-    "http://localhost:3000/public/model.json"
+    "http://ec2-54-180-120-246.ap-northeast-2.compute.amazonaws.com/public/model.json"
   );
   let x = tf.tensor(test_image);
   console.log(x);
