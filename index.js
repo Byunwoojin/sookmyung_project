@@ -10237,7 +10237,7 @@ app.get("/data", async (req, res) => {
   console.log(results);
   // let rawdata = fs.readFileSync("./model/model.json");
   // let data = JSON.parse(rawdata);
-  res.send("모델");
+  res.send(results);
 });
 
 if (process.env.NODE_ENV === "production") {
@@ -10254,6 +10254,10 @@ app.use((req, res, next) => {
   logger.info("hello");
   logger.error(error.message);
   next(error);
+});
+
+app.listen(3000, function () {
+  console.log("Server is running on port " + 3000);
 });
 
 module.exports = app;
