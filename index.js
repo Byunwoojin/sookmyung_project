@@ -10216,24 +10216,10 @@ const test_image = [
   ],
 ];
 
-var sequelize = require('./models').sequelize;
-//서버 실행 시 mySQL과 연동
-sequelize.sync()
-.then(() => {
-  console.log("db connect success");
-})
-.catch((err) => {
-  console.error(err);
-});
-
-const indexRouter = require('./routes');
-const uploadRouter = require('./routes/upload');
-const getImageRouter = require('./routes/image');
-
 app.set("port", process.env.PORT || 3000);
-app.use('/', indexRouter);
-app.use('/upload', uploadRouter);
-app.use('/image', getImageRouter);
+app.get("/", (req, res) => {
+  res.send("Hello Woojin");
+});
 
 app.get("/user", (req, res) => {
   res.send("Hello Hello");
@@ -10251,7 +10237,7 @@ app.get("/data", async (req, res) => {
   console.log(results);
   // let rawdata = fs.readFileSync("./model/model.json");
   // let data = JSON.parse(rawdata);
-  res.send(results);
+  res.send("모델");
 });
 
 if (process.env.NODE_ENV === "production") {
