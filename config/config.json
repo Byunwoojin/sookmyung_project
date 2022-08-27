@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "database_development",
-    "host": "127.0.0.1",
+    "username": "admin",
+    "password": "12345678",
+    "database": "catchDB",
+    "host": "catchdb.c6ieg5733udo.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
+    "username": "admin",
+    "password": "12345678",
+    "database": "catchDB",
+    "host": "catchdb.c6ieg5733udo.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "username": "admin",
+    "password": "12345678",
+    "database": "catchDB",
+    "host": "catchdb.c6ieg5733udo.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }
