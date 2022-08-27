@@ -18,6 +18,8 @@ node_modules/
 jspm_packages/
 typings/
 .npm
+env/
+__pycahae__/
 .eslintcache
 .node_repl_history
 *.tgz
