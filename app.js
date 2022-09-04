@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
 const logger = require("./logger");
@@ -36,6 +37,7 @@ app.use(
 );
 
 app.use(express.json());
+app.use(cors({ origin: ["http://localhost:3000/", "catch-front.vercel.app"] }));
 
 app.set("port", process.env.PORT || 3000);
 app.use("/", indexRouter);
