@@ -4,6 +4,6 @@ const router = express.Router();
 
 // GET / 라우터
 router.get("/", (req, res) => {
-  res.send("Hello 졸작");
+  res.send("Hello Express");
 });
 module.exports = router;
