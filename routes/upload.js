@@ -7,6 +7,17 @@ const Table = require("../models");
 
 const router = express.Router();
 
+var sequelize = require("../models").sequelize;
+
+//서버 실행 시 mySQL과 연동
+sequelize
+  .sync()
+  .then(() => {
+    console.log("db connect success");
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 router.post("/", uploadMulter.uploadImage.single("image"), async (req, res) => {
   if (req.body == undefined)
     return res
@@ -30,14 +41,12 @@ router.post("/", uploadMulter.uploadImage.single("image"), async (req, res) => {
     }).then((dbRes) => {
       imageId = dbRes.id;
     });
-    res
-      .status(statusCode.OK)
-      .send(
-        util.success(statusCode.OK, "image post sucess", {
-          imageId: imageId,
-          type: type,
-        })
-      );
+    res.status(statusCode.OK).send(
+      util.success(statusCode.OK, "image post sucess", {
+        imageId: imageId,
+        type: type,
+      })
+    );
   } catch (error) {
     console.log(error);
     ErrorCaptureStackTrace(err);
