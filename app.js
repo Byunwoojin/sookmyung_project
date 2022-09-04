@@ -41,7 +41,7 @@ app.use(
   cors({ origin: ["http://localhost:3000", "https://catch-front.vercel.app"] })
 );
 
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 8080);
 app.use("/", indexRouter);
 app.use("/upload", uploadRouter);
 app.use("/image", getImageRouter);
@@ -63,6 +63,10 @@ app.use((req, res, next) => {
   logger.info("hello");
   logger.error(error.message);
   next(error);
+});
+
+app.listen(8080, function () {
+  console.log("Server is running on port " + 8080);
 });
 
 module.exports = app;
