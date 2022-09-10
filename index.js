@@ -13,6 +13,8 @@ const { spawn } = require("child_process");
 const tf = require("@tensorflow/tfjs");
 let tfnode = require("@tensorflow/tfjs-node");
 
+const port = process.env.PORT || 3000;
+
 var sequelize = require("./models").sequelize;
 //서버 실행 시 mySQL과 연동
 sequelize
@@ -37,7 +39,7 @@ app.use(
 
 app.use(express.json());
 
-app.set("port", process.env.PORT || 3000);
+app.set("port", port);
 app.use("/", indexRouter);
 app.use("/upload", uploadRouter);
 app.use("/image", getImageRouter);
@@ -61,7 +63,7 @@ app.use((req, res, next) => {
   next(error);
 });
 
-app.listen(3000, function () {
-  console.log("Server is running on port " + 3000);
+app.listen(port, function () {
+  console.log("Server is running on port " + port);
 });
 module.exports = app;
