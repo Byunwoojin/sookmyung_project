@@ -1,5 +1,5 @@
 const express = require("express");
-
+const cors = require("cors");
 const app = express();
 const logger = require("./logger");
 const helmet = require("helmet");
@@ -38,6 +38,9 @@ app.use(
 );
 
 app.use(express.json());
+app.use(
+  cors({ origin: ["http://localhost:3000", "https://catch-front.vercel.app"] })
+);
 
 app.set("port", port);
 app.use("/", indexRouter);
