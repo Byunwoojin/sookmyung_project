@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         type: {
-            type: DataTypes.STRING,
+            type: DataTypes.JSON,
             allowNull: true,
             default: null
         },

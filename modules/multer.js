@@ -9,7 +9,7 @@ const uploadImage = multer({
     filename(req, file, done) {
       // 파일명 + 현재시간.확장자 = 전체 파일명
       const ext = path.extname(file.originalname);
-      done(null, path.basename(file.originalname, ext) + Date.now() + ext);
+      done(null, (path.basename(file.originalname, ext) + Date.now() + ext).replace(/ /g, ''));
       //done(null, 'uploadImage' + path.extname(file.originalname));
     },
   }),
