@@ -45,7 +45,7 @@ const classifyImage = async (imagePath) => {
 
   const analysis_reesult = await getAnalysis(tensor_image);
   console.log(analysis_reesult);
-  return analysis_reesult[0].label;
+  return analysis_reesult;
 };
 
 module.exports = classifyImage;
