@@ -9,10 +9,10 @@ const classifyImage = async (imagePath) => {
 
   function processImage(path) {
     let image = [];
-    const imageSize = 96;
+    const imageSize = 224;
     const imageBuffer = fs.readFileSync(path); // can also use the async readFile instead
     // get tensor out of the buffer
-    image = tfnode.node.decodeImage(imageBuffer, 1);
+    image = tfnode.node.decodeImage(imageBuffer, 3);
     // dtype to float
     image = image.cast("float32");
     // resize the image
