@@ -12,7 +12,7 @@ router.post("/", async (req, res) => {
   //id, type, path 보내기
 
   const model = await tf.loadLayersModel(
-    "http://ec2-54-180-120-246.ap-northeast-2.compute.amazonaws.com/public/test/model.json"
+    "https://catch-back.herokuapp.com/public/test/model.json"
   );
   console.log(req);
   console.log(req.body);
