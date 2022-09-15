@@ -42,7 +42,7 @@ router.post("/", async (req, res) => {
   }
 
   const getAnalysis = async (image) => {
-    let results = await model.predict(tenwor_image).dataSync();
+    let results = await model.predict(image).dataSync();
     const cateogry = [
       "plastic_bag",
       "metal",
@@ -63,7 +63,7 @@ router.post("/", async (req, res) => {
 
   let tenwor_image = await processImage(req.body.path);
 
-  const analysis_reesult = await getAnalysis(tenwor_image);
+  const analysis_reesult = await getAnalysis(req.body.path);
   res.send(analysis_reesult);
 });
 
