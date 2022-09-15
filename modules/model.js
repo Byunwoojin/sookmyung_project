@@ -25,12 +25,13 @@ const classifyImage = async (imagePath) => {
   const getAnalysis = async (image) => {
     let results = await model.predict(tensor_image).dataSync();
     const cateogry = [
-      "Cardboard",
-      "Glass",
-      "Metal",
-      "Paper",
-      "Plastic",
-      "Trash",
+      "plastic_bag",
+      "metal",
+      "plastic",
+      "cardboard",
+      "glass",
+      "paper",
+      "trash",
     ];
     const analysis_reesult = cateogry
       .map((item, idx) => ({
