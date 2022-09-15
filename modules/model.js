@@ -46,21 +46,14 @@ const classifyImage = async (imagePath) => {
         return [];
       });
     console.log(results);
-    const cateogry = [
-      "plastic_bag",
-      "metal",
-      "plastic",
-      "cardboard",
-      "glass",
-      "paper",
-      "trash",
-    ];
-    const analysis_reesult = cateogry
+
+    const analysis_reesult = results
       .map((item, idx) => ({
-        label: item,
-        value: results[idx],
+        label: item.class,
+        value: item.score,
       }))
       .sort((a, b) => b.value - a.value);
+    console.log(analysis_reesult);
     return analysis_reesult;
   };
 
