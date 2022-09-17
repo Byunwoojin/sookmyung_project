@@ -1,6 +1,7 @@
 import sys
 import torch
 
+link = 'https://catch-back.herokuapp.com'
 
 def getName(name, age):
     print (name + " : " + age)
@@ -12,7 +13,7 @@ def getAnalysis(image):
     
 
 if __name__ == '__main__':
-    getAnalysis("/Users/woojin/sookmyung_project/public/image_pet.jpeg")
+    getAnalysis(link+"mage_pet.jpeg")
   
     
 
