@@ -4,7 +4,7 @@ const fs = require("fs");
 
 const classifyImage = async (imagePath) => {
   const model = await tf.loadLayersModel(
-    "https://catch-back.herokuapp.com/public/cnn_models/model.json"
+    "http://ec2-54-180-120-246.ap-northeast-2.compute.amazonaws.com/public/cnn_models/model.json"
   );
 
   function processImage(path) {
@@ -53,7 +53,7 @@ const classifyImage = async (imagePath) => {
 
   const analysis_reesult = await getAnalysis(tensor_image);
   console.log("이미지");
-  console.log(tensor_image.print());
+  console.log(typeof tensor_image);
   return analysis_reesult;
 };
 
