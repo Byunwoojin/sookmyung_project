@@ -12,10 +12,7 @@ const classifyImage = async (imagePath) => {
     const imageSize = 299;
     const imageBuffer = fs.readFileSync(path); // can also use the async readFile instead
     // get tensor out of the buffer
-    image = tfnode.node.decodeImage(
-      imageBuffer,
-      (dct_method = "INTEGER_ACCURATE")
-    );
+    image = tfnode.node.decodeImage(imageBuffer, 3);
     // resize the image
     console.log("중간 이미지");
     console.log(image.dataSync());
