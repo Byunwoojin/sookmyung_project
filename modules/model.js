@@ -1,66 +1,61 @@
 const tf = require("@tensorflow/tfjs");
 const tfnode = require("@tensorflow/tfjs-node");
-const TeachableMachine = require("@sashido/teachablemachine-node");
-
 const fs = require("fs");
 
 const classifyImage = async (imagePath) => {
-  // const model = await tf.loadLayersModel(
-  //   "http://ec2-54-180-120-246.ap-northeast-2.compute.amazonaws.com/public/test/model.json"
-  // );
-
-  const model = new TeachableMachine({
-    modelUrl: "https://teachablemachine.withgoogle.com/models/Hahgv9OBr/",
-  });
+  const model = await tf.loadLayersModel(
+    "http://localhost:3000/public/cnn_models/model.json"
+  );
 
   function processImage(path) {
     let image = [];
-    const imageSize = 224;
+    const imageSize = 299;
     const imageBuffer = fs.readFileSync(path); // can also use the async readFile instead
     // get tensor out of the buffer
-    image = tfnode.node.decodeImage(imageBuffer, 3);
-    // dtype to float
-    image = image.cast("float32");
+    image = tfnode.node.decodeImage(imageBuffer);
     // resize the image
-    image = tf.image.resizeBilinear(image, (size = [imageSize, imageSize])); // can also use tf.image.resizeNearestNeighbor
+    console.log("중간 이미지");
+    console.log(image.dataSync());
+    image = tf.image.resizeNearestNeighbor(
+      image,
+      (size = [imageSize, imageSize])
+    ); // can also use tf.image.resizeNearestNeighbor
     image = image.expandDims(); // to add the most left axis of size 1
+
+    // dtype to float
+    image = image.cast("float32").div(255);
     console.log(image.shape);
-    console.log(image);
     return image;
   }
 
-  const getAnalysis = async (image) => {
-    console.log(image);
-    const link = `https://catch-back.herokuapp.com/${image}`;
-    console.log(link);
-    let results = await model
-      .classify({
-        imageUrl: link,
-      })
-      .then((predictions) => {
-        console.log("Predictions:", predictions);
-        return predictions;
-      })
-      .catch((e) => {
-        console.log("ERROR", e);
-        return [];
-      });
+  const getAnalysis = async (tensor_image) => {
+    let results = await model.predict(tensor_image).dataSync();
+    console.log("결과");
     console.log(results);
-
-    const analysis_reesult = results
+    const cateogry = [
+      "butan",
+      "cardboard",
+      "glass",
+      "metal",
+      "paper",
+      "plastic",
+      "plastic_bag",
+      "trash",
+    ];
+    const analysis_reesult = cateogry
       .map((item, idx) => ({
-        label: item.class,
-        value: item.score,
+        label: item,
+        value: results[idx],
       }))
       .sort((a, b) => b.value - a.value);
-    console.log(analysis_reesult);
     return analysis_reesult;
   };
 
   let tensor_image = await processImage(imagePath);
 
-  const analysis_reesult = await getAnalysis(imagePath);
-  console.log(analysis_reesult);
+  const analysis_reesult = await getAnalysis(tensor_image);
+  console.log("이미지");
+  console.log(tensor_image.print());
   return analysis_reesult;
 };
 
