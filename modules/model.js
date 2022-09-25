@@ -16,10 +16,8 @@ const classifyImage = async (imagePath) => {
     // resize the image
     console.log("중간 이미지");
     console.log(image.dataSync());
-    image = tf.image.resizeNearestNeighbor(
-      image,
-      (size = [imageSize, imageSize])
-    ); // can also use tf.image.resizeNearestNeighbor
+
+    image = tf.image.resizeBilinear(image, (size = [imageSize, imageSize])); // can also use tf.image.resizeNearestNeighbor
     image = image.expandDims(); // to add the most left axis of size 1
 
     // dtype to float
