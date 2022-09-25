@@ -421,7 +421,7 @@
               "name": "block3_sepconv1",
               "trainable": false,
               "dtype": "float32",
-              "filters": 256,
+              "filters": 214,
               "kernel_size": [3, 3],
               "strides": [1, 1],
               "padding": "same",
@@ -507,7 +507,7 @@
               "name": "block3_sepconv2",
               "trainable": false,
               "dtype": "float32",
-              "filters": 256,
+              "filters": 214,
               "kernel_size": [3, 3],
               "strides": [1, 1],
               "padding": "same",
@@ -582,7 +582,7 @@
               "name": "conv2d_1",
               "trainable": false,
               "dtype": "float32",
-              "filters": 256,
+              "filters": 214,
               "kernel_size": [1, 1],
               "strides": [2, 2],
               "padding": "same",
@@ -3695,22 +3695,22 @@
         },
         {
           "name": "batch_normalization_1/gamma",
-          "shape": [256],
+          "shape": [214],
           "dtype": "float32"
         },
         {
           "name": "batch_normalization_1/beta",
-          "shape": [256],
+          "shape": [214],
           "dtype": "float32"
         },
         {
           "name": "batch_normalization_1/moving_mean",
-          "shape": [256],
+          "shape": [214],
           "dtype": "float32"
         },
         {
           "name": "batch_normalization_1/moving_variance",
-          "shape": [256],
+          "shape": [214],
           "dtype": "float32"
         },
         {
@@ -4244,67 +4244,67 @@
         },
         {
           "name": "block3_sepconv1/pointwise_kernel",
-          "shape": [1, 1, 128, 256],
+          "shape": [1, 1, 128, 214],
           "dtype": "float32"
         },
         {
           "name": "block3_sepconv1_bn/gamma",
-          "shape": [256],
+          "shape": [214],
           "dtype": "float32"
         },
         {
           "name": "block3_sepconv1_bn/beta",
-          "shape": [256],
+          "shape": [214],
           "dtype": "float32"
         },
         {
           "name": "block3_sepconv1_bn/moving_mean",
-          "shape": [256],
+          "shape": [214],
           "dtype": "float32"
         },
         {
           "name": "block3_sepconv1_bn/moving_variance",
-          "shape": [256],
+          "shape": [214],
           "dtype": "float32"
         },
         {
           "name": "block3_sepconv2/depthwise_kernel",
-          "shape": [3, 3, 256, 1],
+          "shape": [3, 3, 214, 1],
           "dtype": "float32"
         },
         {
           "name": "block3_sepconv2/pointwise_kernel",
-          "shape": [1, 1, 256, 256],
+          "shape": [1, 1, 214, 214],
           "dtype": "float32"
         },
         {
           "name": "block3_sepconv2_bn/gamma",
-          "shape": [256],
+          "shape": [214],
           "dtype": "float32"
         },
         {
           "name": "block3_sepconv2_bn/beta",
-          "shape": [256],
+          "shape": [214],
           "dtype": "float32"
         },
         {
           "name": "block3_sepconv2_bn/moving_mean",
-          "shape": [256],
+          "shape": [214],
           "dtype": "float32"
         },
         {
           "name": "block3_sepconv2_bn/moving_variance",
-          "shape": [256],
+          "shape": [214],
           "dtype": "float32"
         },
         {
           "name": "block4_sepconv1/depthwise_kernel",
-          "shape": [3, 3, 256, 1],
+          "shape": [3, 3, 214, 1],
           "dtype": "float32"
         },
         {
           "name": "block4_sepconv1/pointwise_kernel",
-          "shape": [1, 1, 256, 728],
+          "shape": [1, 1, 214, 728],
           "dtype": "float32"
         },
         {
@@ -4814,12 +4814,12 @@
         },
         {
           "name": "conv2d_1/kernel",
-          "shape": [1, 1, 128, 256],
+          "shape": [1, 1, 128, 214],
           "dtype": "float32"
         },
         {
           "name": "conv2d_2/kernel",
-          "shape": [1, 1, 256, 728],
+          "shape": [1, 1, 214, 728],
           "dtype": "float32"
         },
         {
