@@ -4,7 +4,7 @@ const fs = require("fs");
 
 const classifyImage = async (imagePath) => {
   const model = await tf.loadLayersModel(
-    "https://catch-back.herokuapp.com/public/cnn_models/model.json"
+    "http://ec2-54-180-120-246.ap-northeast-2.compute.amazonaws.com/public/cnn_models/model.json"
   );
 
   function processImage(path) {
@@ -12,7 +12,10 @@ const classifyImage = async (imagePath) => {
     const imageSize = 299;
     const imageBuffer = fs.readFileSync(path); // can also use the async readFile instead
     // get tensor out of the buffer
-    image = tfnode.node.decodeImage(imageBuffer);
+    image = tfnode.node.decodeImage(
+      imageBuffer,
+      (dct_method = "INTEGER_ACCURATE")
+    );
     // resize the image
     console.log("중간 이미지");
     console.log(image.dataSync());
