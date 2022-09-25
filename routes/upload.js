@@ -9,15 +9,6 @@ const router = express.Router();
 
 var sequelize = require("../models").sequelize;
 
-//서버 실행 시 mySQL과 연동
-sequelize
-  .sync()
-  .then(() => {
-    console.log("db connect success");
-  })
-  .catch((err) => {
-    console.error(err);
-  });
 router.post("/", uploadMulter.uploadImage.single("image"), async (req, res) => {
   if (req.body == undefined)
     return res
@@ -48,8 +39,7 @@ router.post("/", uploadMulter.uploadImage.single("image"), async (req, res) => {
       })
     );
   } catch (error) {
-    console.log(error);
-    ErrorCaptureStackTrace(err);
+    if (ErrorCaptureStackTrace != undefined) ErrorCaptureStackTrace(err);
     res
       .status(statusCode.DB_ERROR)
       .send(util.fail(statusCode.DB_ERROR, "DB create error"));
