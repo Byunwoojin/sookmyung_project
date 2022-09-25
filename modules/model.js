@@ -4,7 +4,7 @@ const fs = require("fs");
 
 const classifyImage = async (imagePath) => {
   const model = await tf.loadLayersModel(
-    "http://localhost:3000/public/cnn_models/model.json"
+    "https://catch-back.herokuapp.com/public/cnn_models/model.json"
   );
 
   function processImage(path) {
